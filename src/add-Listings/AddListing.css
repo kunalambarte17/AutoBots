@@ -1,0 +1,36 @@
+.f-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.form-t{
+  margin: 0px 15px 0px 15px;
+}
+.check-box{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+@media (max-width:780px){
+  .f-container{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .check-box{
+    display: grid;
+    grid-template-columns:auto auto;
+  }
+}
+
+@media (max-width:550px){
+  .btn{
+    margin-top: 20px;
+  }
+  .f-container{
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .check-box{
+    display: grid;
+    grid-template-columns:auto;
+  }
+}

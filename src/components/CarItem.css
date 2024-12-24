@@ -1,0 +1,9 @@
+.boxes{
+    padding: 4px;
+}
+.name{
+    font-weight: bold;
+    color: black;
+    font-size: large;
+    margin-bottom: 2px;
+}

@@ -1,0 +1,24 @@
+.box{
+    width:15rem;
+    text-align: center;
+    cursor: pointer;
+}
+.image-box{
+    display: flex;
+    gap: 5px;
+}
+.upload-images{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+@media (max-width:550px){
+    .contain{
+        display:flex;
+        flex-direction: column;
+    }
+    .contains{
+        display: flex;
+        flex-direction: column;
+    }
+}

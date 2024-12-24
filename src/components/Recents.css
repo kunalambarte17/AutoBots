@@ -1,0 +1,43 @@
+.recentCars{
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top:15px;
+}
+/* .image-carousel{
+    margin-bottom: 200px;
+} */
+.label-info{
+    font-size:3.5rem;
+    font-weight: bold;
+    text-align: start;
+    margin-bottom:10px;
+    cursor: pointer;
+}
+.label-text{
+    font-size:1.2rem;
+    text-align: start;
+    margin-bottom: 70px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1650px) {
+    .label-text{
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 1250px) {
+    .label-text{
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 905px) {
+    .label-text{
+        display: none;
+    }
+    .label-info{
+        margin-bottom: 30px;
+    }
+}

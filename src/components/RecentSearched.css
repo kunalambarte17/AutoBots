@@ -1,0 +1,26 @@
+.title{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: 37px;
+    margin-bottom: 30px;
+}
+.card-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.card{
+    border: none !important;
+}
+
+@media (max-width : 850px){
+    .card-container{
+        display: grid;
+        grid-template-columns:auto auto ;
+    }
+}
+@media (max-width : 572px){
+    .card-container{
+        display: grid;
+        grid-template-columns:auto;
+    }
+}
