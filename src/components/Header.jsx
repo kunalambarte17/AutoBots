@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className='navbar shadow-sm bg-body-tertiary rounded'>
       <img src="/Autobots.png" width={160} height={120} />
-      {/* <h1 className='text-blue'>Autobots</h1> */}
+
 
       <ul className='list hidden md:flex '>
         <li className='list-element'>Home</li>
