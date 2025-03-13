@@ -16,6 +16,7 @@ function AddLisiting() {
 
   const [formData, setFormData] = useState([]);
   const [featureData, setFeatureData] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]); // Store uploaded images
 
   const naviagte = useNavigate();
 
@@ -49,21 +50,34 @@ function AddLisiting() {
 
   }
 
+  // Receive uploaded images from UploadImg component
+  const handleImageUpload = (images) => {
+    setUploadedImages(images);
+  };
+
   const onSubmit=async(e)=>{
     e.preventDefault();
     console.log(formData);
     console.log(featureData);
 
+    if (uploadedImages.length === 0) {
+      alert("Please upload at least one image.");
+      return;
+    }
+
     try{
       const result = await db.insert(CarListing).values({
         ...formData,
         features: JSON.stringify(featureData), // Convert featureData to a plain JSON string
+        images: JSON.stringify(uploadedImages), // Save uploaded images
       });
       if(result){
         console.log("Data Saved")
+        // navigate("/listings");
       }
     }catch(e){
       console.log("Error",e)
+      alert("Failed to save listing.");
     }
 
   }
@@ -76,7 +90,7 @@ function AddLisiting() {
         <div className="xyz ms-4">
           <h2 className='fw-bold fs-3 mb-4 '>Add New Listing</h2>
         </div>
-        <form className='form-t border rounded m-10 mb-4'>
+        <form className='form-t border rounded m-10 mb-4' onSubmit={onSubmit}>
           {/* Car Detail */}
           <div className='mx-10'>
             <h2 className='fs-3 fw-medium m-3'>Car Detail</h2>
@@ -115,10 +129,10 @@ function AddLisiting() {
 
           {/* Car Images */}
 
-          <UploadImg/>
+          <UploadImg onImageUpload={handleImageUpload} />
 
           <div className='mt-10 me-4 mb-3 d-flex justify-content-end'>
-              <button onClick={(e)=>onSubmit(e)} className='btn btn-primary'>Submit</button>
+              <button type='submit' className='btn btn-primary'>Submit</button>
           </div>
 
         </form>
