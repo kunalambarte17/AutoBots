@@ -8,11 +8,12 @@ const Header = () => {
   const {user, isSignedIn} = useUser(); //it is provided by clerk
   return (
     <div className='navbar shadow-sm bg-body-tertiary rounded'>
-      <img src="/Autobots.png" width={160} height={120} />
-
+      <Link to={'/'}><img src="/Autobots.png" width={160} height={120} /></Link>
 
       <ul className='list hidden md:flex '>
-        <li className='list-element'>Home</li>
+        <Link to={'/'}>
+          <li className='list-element'>Home</li>
+        </Link>
         <li className='list-element'>Search</li>
         <li className='list-element'>New</li>
         <li className='list-element'>Preowned</li>

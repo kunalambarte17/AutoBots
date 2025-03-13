@@ -13,6 +13,7 @@
 }
 .list-element{
     font-size: large;
+    color: black;
 }
 .list-element:hover{
     scale: 1.2;

@@ -17,6 +17,7 @@ function AddLisiting() {
   const [formData, setFormData] = useState([]);
   const [featureData, setFeatureData] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]); // Store uploaded images
+  const [isUploading, setIsUploading] = useState(false); 
 
   const naviagte = useNavigate();
 
@@ -53,6 +54,7 @@ function AddLisiting() {
   // Receive uploaded images from UploadImg component
   const handleImageUpload = (images) => {
     setUploadedImages(images);
+    setIsUploading(false);
   };
 
   const onSubmit=async(e)=>{
@@ -61,7 +63,6 @@ function AddLisiting() {
     console.log(featureData);
 
     if (uploadedImages.length === 0) {
-      alert("Please upload at least one image.");
       return;
     }
 
@@ -73,11 +74,10 @@ function AddLisiting() {
       });
       if(result){
         console.log("Data Saved")
-        // navigate("/listings");
+        naviagte("/profile");
       }
     }catch(e){
       console.log("Error",e)
-      alert("Failed to save listing.");
     }
 
   }
