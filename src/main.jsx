@@ -7,6 +7,8 @@ import Contact from './Contact'
 import { ClerkProvider } from '@clerk/clerk-react'
 import Profile from './profile/Profile'
 import AddLisiting from './add-Listings/AddLisiting'
+import CarDetails from './profile/CarDetails'
+
 
 
 const router = createBrowserRouter([
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
   {
     path:'/add-Listing',
     element:<AddLisiting/>
+  },
+  {
+    path:'/listing/:id',
+    element:<CarDetails/>
   }
 ])
 
@@ -39,5 +45,5 @@ createRoot(document.getElementById('root')).render(
      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
     <RouterProvider router={router} />
     </ClerkProvider>
-  </StrictMode>,
+  </StrictMode>
 )

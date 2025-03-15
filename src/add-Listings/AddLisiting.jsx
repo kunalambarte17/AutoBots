@@ -7,7 +7,7 @@ import DropDown from './components/DropDown';
 import TextArea from './components/TextArea';
 import features from './../Shared/features.json'
 import { db } from './../../configs';
-import { CarListing } from './../../configs/schema';
+import { CarListing, CarImages } from './../../configs/schema';
 import UploadImg from './components/UploadImg';
 import { useNavigate } from 'react-router-dom';
 
@@ -57,30 +57,70 @@ function AddLisiting() {
     setIsUploading(false);
   };
 
-  const onSubmit=async(e)=>{
+  // const onSubmit=async(e)=>{
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   console.log(featureData);
+
+  //   if (uploadedImages.length === 0) {
+  //     return;
+  //   }
+
+  //   try{
+  //     const result = await db.insert(CarListing).values({
+  //       ...formData,
+  //       features: JSON.stringify(featureData), // Convert featureData to a plain JSON string
+  //       images: JSON.stringify(uploadedImages), // Save uploaded images
+  //     });
+  //     if(result){
+  //       console.log("Data Saved")
+  //       naviagte("/profile");
+  //     }
+  //   }catch(e){
+  //     console.log("Error",e)
+  //   }
+
+  // }
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     console.log(featureData);
-
+  
     if (uploadedImages.length === 0) {
+      console.error("No images uploaded. Please upload at least one image.");
       return;
     }
-
-    try{
-      const result = await db.insert(CarListing).values({
+  
+    try {
+      const [newListing] = await db.insert(CarListing).values({
         ...formData,
-        features: JSON.stringify(featureData), // Convert featureData to a plain JSON string
-        images: JSON.stringify(uploadedImages), // Save uploaded images
-      });
-      if(result){
-        console.log("Data Saved")
-        naviagte("/profile");
+        features: JSON.stringify(featureData), // Convert featureData to JSON
+      }).returning({ id: CarListing.id }); // Get the inserted ID
+  
+      if (!newListing || !newListing.id) {
+        console.error("Failed to insert car listing.");
+        return;
       }
-    }catch(e){
-      console.log("Error",e)
-    }
+  
+      const carListingId = newListing.id;
+      console.log("New Car Listing ID:", carListingId);
 
-  }
+      await db.insert(CarImages).values(
+        uploadedImages.map((url) => ({
+          imageUrl: url,
+          carListingId: carListingId, 
+        }))
+      );
+  
+      console.log("Car images successfully saved!");
+
+      naviagte("/profile");
+    } catch (e) {
+      console.error("Error inserting data:", e);
+    }
+  };
+  
 
 
   return (

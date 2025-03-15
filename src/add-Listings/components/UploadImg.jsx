@@ -40,9 +40,9 @@ function UploadImg({onImageUpload}) {
       if (validUrls.length > 0) {
         setUploadedUrls(validUrls);
         onImageUpload(validUrls); 
-        console.log(validUrls)
+        
       }
-  
+      console.log(validUrls)
       setUploading(false);
     };
   
