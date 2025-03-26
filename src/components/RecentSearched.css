@@ -1,26 +1,75 @@
-.title{
-    font-size: xx-large;
-    font-weight: bold;
-    margin-top: 37px;
-    margin-bottom: 30px;
-}
-.card-container{
-    display: flex;
-    justify-content: space-evenly;
-}
-.card{
-    border: none !important;
+.recent-search-container {
+  padding: 20px;
 }
 
-@media (max-width : 850px){
-    .card-container{
-        display: grid;
-        grid-template-columns:auto auto ;
-    }
+.recent-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
-@media (max-width : 572px){
-    .card-container{
-        display: grid;
-        grid-template-columns:auto;
-    }
+
+.recent-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.car-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+  transform: scale(1.05);
+}
+
+.car-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-info {
+  padding: 15px;
+}
+
+.price {
+  font-weight: bold;
+  color: #2d89ff;
+}
+
+.details-btn {
+  display: inline-block;
+  background: #2d89ff;
+  color: #fff;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.details-btn:hover {
+  background: #1c60d0;
+}
+
+/* Responsive Layout */
+@media (min-width: 1024px) {
+  .recent-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .recent-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .recent-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
